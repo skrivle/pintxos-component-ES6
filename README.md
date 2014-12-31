@@ -1,0 +1,1 @@
+# pinxtos-component-es6
