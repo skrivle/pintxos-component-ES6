@@ -12,7 +12,7 @@ describe('Component', function () {
 
 	});
 
-	describe('getEl()', function () {
+	describe('$el getter', function () {
 		it('should return a jQuery object', function () {
 
 			expect(instance.$el instanceof jQuery).toBe(true);
@@ -109,7 +109,7 @@ describe('Component', function () {
 		});
 
 	});
-	/*
+
 	describe('query cache', function () {
 
 		it('should cache elements', function () {
@@ -129,12 +129,12 @@ describe('Component', function () {
 			instance._query('.newElement');
 
 			// adding the element
-			instance.getEl().append('<div class="newElement"/>');
+			instance.$el.append('<div class="newElement"/>');
 
 			// query again with forceQuery = true
 			var $el = instance._query('.newElement', true);
 
-			expect($el[0]).toEqual(instance.getEl().find('.newElement')[0]);
+			expect($el[0]).toEqual(instance.$el.find('.newElement')[0]);
 		});
 
 		it('should clear the query cache when the component is destroyed', function () {
@@ -149,27 +149,27 @@ describe('Component', function () {
 
 		it('should return a jQuery object when given a string', function () {
 			var $el = instance._resolveElement('.child');
-			expect($el[0]).toBe(instance.getEl().find('.child')[0]);
+			expect($el[0]).toBe(instance.$el.find('.child')[0]);
 		});
 
 		it('should return a jQuery object when given a jQuery object', function () {
-			var $el = instance._resolveElement(instance.getEl().find('.child'));
-			expect($el[0]).toBe(instance.getEl().find('.child')[0]);
+			var $el = instance._resolveElement(instance.$el.find('.child'));
+			expect($el[0]).toBe(instance.$el.find('.child')[0]);
 		});
 
 		it('should return the main element when given undefined', function () {
 			var el = undefined;
 			var $el = instance._resolveElement(el);
-			expect($el).toBe(instance.getEl());
+			expect($el).toBe(instance.$el);
 		});
 
 		it('should return a jQuery object when given an HTMLElement', function () {
-			var $el = instance._resolveElement(instance.getEl().find('.child')[0]);
-			var el = instance.getEl().find('.child')[0];
-			expect($el[0]).toBe(instance.getEl().find('.child')[0]);
+			var $el = instance._resolveElement(instance.$el.find('.child')[0]);
+			var el = instance.$el.find('.child')[0];
+			expect($el[0]).toBe(instance.$el.find('.child')[0]);
 		});
 
-	});*/
+	});
 
 
 
