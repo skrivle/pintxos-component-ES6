@@ -1,42 +1,46 @@
-describe('Component', function () {
+var Component = System.get('pintxos-component').default;
 
-	'use strict';
+describe('Component', function () {
 
 	var instance;
 
 	beforeEach(function () {
 		$('.test').remove();
 		$('body').append('<div class="test"><div class="child"/></div>');
-		instance = new pintxos.Component($('.test')[0], {});
+
+		instance = new Component($('.test')[0], {});
+
 	});
 
 	describe('getEl()', function () {
 		it('should return a jQuery object', function () {
-			expect(instance.getEl() instanceof jQuery).toBe(true);
+
+			expect(instance.$el instanceof jQuery).toBe(true);
 		});
 	});
 
 	describe('lifecycle API', function () {
 
 		it('should be destroyable', function () {
-			expect(instance.isDestroyed()).toBe(true);
+			expect(instance.isDestroyed).toBe(true);
 
 			instance.init();
-			expect(instance.isDestroyed()).toBe(false);
+
+			expect(instance.isDestroyed).toBe(false);
 
 			instance.destroy();
-			expect(instance.isDestroyed()).toBe(true);
+			expect(instance.isDestroyed).toBe(true);
 		});
 
 		it('shoud trigger init and destroy events on the component\'s main element', function () {
 
 			var initTriggered, destroyTriggered;
 
-			instance.getEl().on(instance.getSettings().events.init, function () {
+			instance.$el.on(instance.settings.events.init, function () {
 				initTriggered = true;
 			});
 
-			instance.getEl().on(instance.getSettings().events.destroy, function () {
+			instance.$el.on(instance.settings.events.destroy, function () {
 				destroyTriggered = true;
 			});
 
@@ -105,7 +109,7 @@ describe('Component', function () {
 		});
 
 	});
-
+	/*
 	describe('query cache', function () {
 
 		it('should cache elements', function () {
@@ -165,7 +169,7 @@ describe('Component', function () {
 			expect($el[0]).toBe(instance.getEl().find('.child')[0]);
 		});
 
-	});
+	});*/
 
 
 

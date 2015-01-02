@@ -8,7 +8,7 @@ module.exports = function (grunt) {
 				files: [
 					'node_modules/grunt-traceur/node_modules/traceur/bin/traceur-runtime.js',
 					'bower_components/jquery/dist/jquery.js',
-					'dist/index.js',
+					'dist/pintxos-component.js',
 					'test/*.js'
 				],
 				frameworks: [
@@ -30,13 +30,14 @@ module.exports = function (grunt) {
 				experimental: true,
 				// module naming options,
 				moduleNaming: {
-					stripPrefix: "dist/"
+					stripPrefix: "dist",
 				}
 			},
 			custom: {
 				files: {
-					'dist/index.js' : 'index.js'
+					'dist/pintxos-component.js' : 'index.js'
 				}
+
 			}
 		},
 

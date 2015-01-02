@@ -1,15 +1,10 @@
-
-
-
-/* Dependencies
-------------------------------------------------- */
-import $ from 'jquery';
-
-
 /* Default settings
 ------------------------------------------------- */
 var _defaults = {
-
+	events: {
+		init: 'init.Component',
+		destroy: 'destroy.Component'
+	}
 };
 
 
@@ -18,16 +13,27 @@ var _defaults = {
 class Component {
 
 	constructor (el, options) {
+		this._$el = $(el);
 		this._isDestroyed = true;
 		this._settings = $.extend(true, {}, _defaults, options);
 	}
 
 	init () {
+
+		if (!this.isDestroyed) {
+			this.destroy();
+		}
+
 		this._isDestroyed = false;
+		this.$el.trigger(this.settings.events.init);
+
+		return this;
 	}
 
 	destroy () {
 		this._isDestroyed = true;
+		this.$el.trigger(this.settings.events.destroy);
+		return this;
 	}
 
 	get isDestroyed () {
@@ -41,29 +47,9 @@ class Component {
 	get settings () {
 		return this._settings;
 	}
-
-	_on () {
-
-	}
-
-	_off () {
-
-	}
-
-	_query () {
-
-	}
-
-	_clearQueryCache () {
-
-	}
-
-	_resolveElement () {
-
-	}
 }
 
 
 /* Export
 ------------------------------------------------- */
-export { Component };
+export default Component;
