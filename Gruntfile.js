@@ -5,9 +5,12 @@ module.exports = function (grunt) {
 		karma: {
 			options: {
 				basePath: '',
-				files: {
-
-				},
+				files: [
+					'node_modules/grunt-traceur/node_modules/traceur/bin/traceur-runtime.js',
+					'bower_components/jquery/dist/jquery.js',
+					'dist/index.js',
+					'test/*.js'
+				],
 				frameworks: [
 					'jasmine'
 				]
@@ -39,7 +42,16 @@ module.exports = function (grunt) {
 
 		watch: {
 			files: '*.js',
-			tasks: ['jshint']
+			tasks: ['traceur']
+		},
+
+		concurrent: {
+			dev: {
+				tasks: ['watch', 'karma:dev'],
+				options: {
+					logConcurrentOutput: true
+				}
+			}
 		}
 
 	});
@@ -48,8 +60,9 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-karma');
 	grunt.loadNpmTasks('grunt-traceur');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-concurrent');
 
 
-	grunt.registerTask('default', ['concurrent:dev']);
-	grunt.registerTask('test', ['jshint', 'karma:ci']);
+	grunt.registerTask('default', ['traceur', 'concurrent:dev']);
+	grunt.registerTask('test', ['traceur', 'karma:ci']);
 };

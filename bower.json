@@ -1,19 +1,20 @@
 {
-	"name": "pintxos-pinxtos-component-es6",
-	"version": "0.0.0",
-	"homepage": "https://github.com/pintxos/pinxtos-component-es6",
-	"main": "index.js",
-	"ignore": [
-		"**/.*",
-		"node_modules",
-		"bower_components",
-		"test",
-		"Gruntfile.js",
-		"package.json"
-	],
-	"authors": [
-		"Jelle Versele"
-	],
-	"dependencies": {}
+  "name": "pintxos-pinxtos-component-es6",
+  "version": "0.0.0",
+  "homepage": "https://github.com/pintxos/pinxtos-component-es6",
+  "main": "index.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "Gruntfile.js",
+    "package.json"
+  ],
+  "authors": [
+    "Jelle Versele"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.3"
+  }
 }
-
