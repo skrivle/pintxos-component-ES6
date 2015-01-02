@@ -1,4 +1,6 @@
 
+
+
 /* Dependencies
 ------------------------------------------------- */
 import $ from 'jquery';
@@ -64,4 +66,4 @@ class Component {
 
 /* Export
 ------------------------------------------------- */
-export Component;
+export { Component };
